@@ -16,7 +16,7 @@ pipeline{
       steps{
         script{
           echo"Building docker image"
-          sh "docker build -t ${maven-app}:${tag} . "
+          sh "docker build -t ${IMAGE_NAME}:${tag} . "
           withCredentails([gitUsernamePassword(credentialsId:'github', gitToolName:'Default')]){
             sh 'git config --global user.email ${EMAIL}'
             sh 'git config --global user.name ${USERNAME}'
