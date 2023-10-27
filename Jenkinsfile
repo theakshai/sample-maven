@@ -5,6 +5,9 @@ pipeline{
   environment{
     IMAGE_NAME = "maven-app"
     TAG = "build-{BUILD_NUMBER}"
+    USERNAME = "theakshai"
+    EMAIL = "akshaiakshai35@gmail.com"
+
     
   }
 
@@ -15,8 +18,8 @@ pipeline{
           echo"Building docker image"
           sh "docker build -t ${maven-app}:${tag} . "
           withCredentails([gitUsernamePassword(credentialsId:'github', gitToolName:'Default')]){
-            sh 'git config --global user.email "akshaiakshai35@gmail.com"'
-            sh 'git config --global user.name "theakshai"'
+            sh 'git config --global user.email ${EMAIL}'
+            sh 'git config --global user.name ${USERNAME}'
             sh 'git tag -a ${env.TAG} -m ${env.TAG}'
             sh 'git push --tags'
           }
