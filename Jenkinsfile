@@ -1,6 +1,6 @@
 pipeline{
   agent{
-      label "ec2-fleet"
+      label "spot-agents"
   }
   environment{
     IMAGE_NAME = "maven-app"
