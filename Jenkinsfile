@@ -2,7 +2,7 @@ pipeline{
   agent{
       label ""
   }
-  enivronment{
+  environment{
     IMAGE_NAME = "maven-app"
     TAG = "build-{BUILD_NUMBER}"
     
